@@ -361,7 +361,7 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 const db = getFirestore(app);
-        const touristMarkers[] = {};
+        const touristMarkers = {};
         const TOURIST_COLLECTION_PATH = "tourists";
         
         function updateMapMarker(touristId, lat, lon, status) { 
@@ -454,6 +454,7 @@ onSnapshot(touristCollection, (snapshot) => {
 </body>
 
 </html>
+
 
 
 
