@@ -368,13 +368,13 @@ const db = getFirestore(app);
     const coordinates = [lon, lat]; 
     
     // 1. Calculate the Geofence Status
-    const geoFncPosStat = getGeofenceStatus(lat, lon);
+    //const geoFncPosStat = getGeofenceStatus(lat, lon);
     
     // 2. Combine the status for the popup text
     const popupText = 
         `Tourist ID: ${touristId}\n` +
         `Location: ${lat.toFixed(6)}, ${lon.toFixed(6)}\n` +
-        `Geofence Status: ${geoFncPosStat}\n` +
+        //`Geofence Status: ${geoFncPosStat}\n` +
         `API Status: ${status || 'N/A'}`; // Include API status from the backend
     
     if (touristId in touristMarkers) {
@@ -454,6 +454,7 @@ onSnapshot(touristCollection, (snapshot) => {
 </body>
 
 </html>
+
 
 
 
