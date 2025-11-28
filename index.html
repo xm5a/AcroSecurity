@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelista Tours - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Basic Reset and Body Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 64rem; /* 1024px */
+            background-color: #ffffff;
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            flex-direction: row;
+        }
+
+        /* Left Side (Image and Branding) */
+        .image-panel {
+            width: 50%;
+            position: relative;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .image-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .image-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .brand-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.75rem; /* 60px */
+            margin-bottom: 1rem;
+        }
+
+        .brand-tagline {
+            font-size: 1.25rem; /* 20px */
+            line-height: 1.75;
+        }
+        
+        /* Right Side (Login Form) */
+        .form-panel {
+            width: 50%;
+            padding: 2rem 3rem;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .form-container {
+            width: 100%;
+            max-width: 28rem; /* 448px */
+            margin: 0 auto;
+        }
+        
+        .form-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-subtitle {
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            color: #374151;
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group .icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 2.6rem; /* Adjust based on input padding and label height */
+            color: #9ca3af;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem; /* 8px */
+            transition: all 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #111827;
+            box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.4);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 2rem;
+            margin-top: -1rem;
+        }
+
+        .forgot-password a {
+            font-size: 0.875rem; /* 14px */
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: #111827;
+        }
+        
+        .login-button {
+            width: 100%;
+            background-color: #1f2937;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .login-button:hover {
+            background-color: #111827;
+            transform: scale(1.05);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .divider hr {
+            flex-grow: 1;
+            border-top: 1px solid #d1d5db;
+        }
+        
+        .divider span {
+            padding: 0 1rem;
+            color: #9ca3af;
+            font-weight: 600;
+        }
+        
+        .register-link {
+            text-align: center;
+            color: #4b5563;
+        }
+        
+        .register-link a {
+            font-weight: 700;
+            color: #1f2937;
+            text-decoration: none;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 28rem;
+            }
+            .image-panel, .form-panel {
+                width: 100%;
+            }
+            .image-panel {
+                padding: 4rem 1.5rem;
+                min-height: 250px;
+            }
+            .form-panel {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="image-panel">
+            <div class="image-content">
+                <h1 class="brand-title">Travelista Tours</h1>
+                <p class="brand-tagline">
+                    Travel is the only purchase that enriches you in ways beyond material wealth
+                </p>
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <div class="form-container">
+                <h2 class="form-title">Welcome</h2>
+                <p class="form-subtitle">Login with Email</p>
+
+                <!-- I have updated the line below -->
+                <form action="#">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="email" id="email" name="email" value="Example@Tourist.com" class="input-field">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <i class="fas fa-lock icon"></i>
+                        <input type="password" id="password" name="password" value="************" class="input-field">
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-button">LOGIN</button>
+                    
+                    <div class="divider">
+                        <hr>
+                        <span>OR</span>
+                        <hr>
+                    </div>
+
+                    <p class="register-link">
+                        Don't have an account? 
+                        <a href="#">Register Now</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBinQO3_OZ4zozkvyC4litpysTy0MU0Dz4",
+    authDomain: "acrosecurity-c3c03.firebaseapp.com",
+    projectId: "acrosecurity-c3c03",
+    storageBucket: "acrosecurity-c3c03.firebasestorage.app",
+    messagingSenderId: "336149977548",
+    appId: "1:336149977548:web:f7d833f35a89f97afaa569",
+    measurementId: "G-QTV2HJ8PMX"
+  };
+
+  // 1. Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app); // Get auth instance
+
+  // 2. Select the DOM elements
+  const loginForm = document.querySelector('form'); // Select the <form> element
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+
+  // 3. Add the event listener to the form submission
+  loginForm.addEventListener('submit', (event) => {
+    // Prevent the default form submission (which reloads the page)
+    event.preventDefault();
+
+    // 4. Get the values *at the moment of submission*
+    const email = emailInput.value;
+    const password = passwordInput.value;
+
+    console.log("Attempting sign-in with:", email);
+
+    // 5. Call the Firebase function
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in successfully
+        const user = userCredential.user;
+        console.log("Signed in successfully!", user);
+         window.location.href = "homepage.html";
+        // You might want to change the button text or give a success message here
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        
+        // Display a more user-friendly error message
+        console.error("Sign-in failed:", errorCode, errorMessage);
+        alert(`Login Failed: ${errorMessage}`);
+        
+        // Optional: Clear the password field for security
+        passwordInput.value = "";
+      });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
